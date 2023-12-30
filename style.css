@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 62.5%;
+}
+
+
+body {
+    font-size: 1.6rem;
+    background-color: #e7d9cd;
+    font-family: 'Lexend Giga', sans-serif;
+    padding: 10px;
+}
+
+#form-calculate {
+    margin-bottom: 20px;
+}
+   
+
+input {
+    background-color: white;
+    font-size: 2rem;
+    padding: 10px;
+    border: black;
+    margin-bottom: 10px;
+}
+input:focus {
+    border-color: none;
+}
+
+.odds {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+}
+.submit-result {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 2rem;
+    margin-left: 80px;
+}
+
+.bet-profit {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#profit {
+    font-size: 3rem;
+}
+
+.not-split-stake {
+    display: flex;
+    gap: 20px;
+}
+.box {
+    padding: 10px;
+    background-color: cadetblue; 
+}
+
+.win-profit {
+    display: flex;
+    gap: 20px;
+}
+
+.result-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+

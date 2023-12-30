@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbitrage Calculator</title>
+    <link href="style.css" rel="stylesheet">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Arbitrage Calculator</h1>
+    </header>
+
+    <form id="form-calculate">
+        <div class="odds">
+            <div class="input-control">
+                <label>Odds 1: </label>
+                <input type="text" name="odds1" placeholder="Enter the odds 1" required pattern="^\d+(\.\d+)?$" title="Please enter a valid number">
+                <span class="error" style="color: red;"></span>
+            </div>
+            <div class="input-control">
+                <label>Odds 2: </label>
+                <input type="text" name="odds2" placeholder="Enter the odds 2" required pattern="^\d+(\.\d+)?$" title="Please enter a valid number">
+                <span class="error" style="color: red;"></span>
+            </div>
+        </div>
+            <div class="input-control">
+                <label>Stake: </label>
+                <input type="text" name="stake" placeholder="stake" required pattern="^\d+(\.\d+)?$" title="Please enter a valid number">
+                <span class="error" style="color: red;"></span>
+                <div class="submit-result">
+                    <button type="submit" name="calculate-button">Calculate</button>
+                    <h3 id="odd-result"></h3>
+                </div>
+            </div>
+    </form>
+
+    <section class="result">
+        <p>Split Bet:</p>
+        <div class="result-row">
+            <div class="bet-profit">
+                <div>
+                    <p>Bet to Odds 1: <span id="bet1"></span></p>
+                    <p>Bet to Odds 2: <span id="bet2"></span></p>
+                </div>
+                <div>
+                    <p>Profits: </p>
+                    <p id="profit"></p>
+                </div>
+            </div>
+            <div class="not-split-stake">
+                <div class="box">
+                    <p>Bet to Odds 1: <span id="needToBet2"></span></p>
+                    <p>Bet to Odds 2: <span class="stake"></span></p>
+                    <div class="win-profit">
+                        <div>
+                            <p>Winner: </p>
+                            <p>Odds 1</p>
+                            <p>Odds 2</p>
+                        </div>
+                        <div>
+                            <p>Profits: </p>
+                            <p id="win1-odds1"> </p>
+                            <p id="win1-odds2"> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <p>Bet to Odds 1: <span class="stake"></span> </p>
+                    <p>Bet to Odds 2: <span id="needToBet1"></span></p>
+                    <div class="win-profit">
+                        <div>
+                            <p>Winner: </p>
+                            <p>Odds 1</p>
+                            <p>Odds 2</p>
+                        </div>
+                        <div>
+                            <p>Profits: </p>
+                            <p id="win2-odds1"> </p>
+                            <p id="win2-odds2"> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <h2 id="profit">Profit: </h2>
+    <div>
+        <p>Odds1 needs to bet: <span id="bet1"></span></p>
+        <p>Odds2 needs to bet: <span id="bet2"></span></p>
+    </div>
+
+    <div>
+        <p>Odds1 needs to bet: <span id="stake1"></span> If All Stake is place in odds 2. <span id="win1-odds1"></span> - <span id="win1-odds2"></span></p>
+        <p>Odds2 needs to bet: <span id="stake2"></span> If All Stake is place in odds 1. <span id="win2-odds1"></span> - <span id="win2-odds2"></span></p>
+
+    </div> -->
+</body>
+</html>
