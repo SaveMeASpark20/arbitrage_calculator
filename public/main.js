@@ -18,8 +18,6 @@ form.addEventListener("input", (event) => {
          const error = inputControl.querySelector('.error');
          error.innerText = "";
     }   
-    
-    
 
 })
 
