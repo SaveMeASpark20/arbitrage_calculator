@@ -3,7 +3,7 @@ import { arbitrageCalculation } from "./arbitrage-calculation.js";
 
 const main = async() => {
     const resultCalculation = await arbitrageCalculation();
-    console.log(resultCalculation);
+    
     displayCalculation(resultCalculation);
     
 }   

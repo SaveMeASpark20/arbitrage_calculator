@@ -4,17 +4,28 @@ const { arbitrageCalculation } = require('../scraping/arbitrage-calculation-1xBe
 
 
 router.get('/', async (req, res) => {
-    try{
-        const resultCalculation = await arbitrageCalculation();
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
     
-        res.send(resultCalculation);
+    const sseInterval = setInterval(async () => {        
+        try{
+            const resultCalculation = await arbitrageCalculation();
+            // console.log(resultCalculation);
+            res.write(`data: ${JSON.stringify(resultCalculation)}\n\n`);
+    
+        }catch(error){
+            console.log('Error in SSE stream: ', error);
+            res.write(`data: ${JSON.stringify({error: 'Internal Server Error'})}\n\n`);
+            res.end();
+        }
+    },50000);
+    
+    
 
-    }catch(error){
-        console.log(error);
-        res.status(500).send("Internal Server Errror");
-    }
+    req.on('close', () => {
+        clearInterval(sseInterval);
+    })
 })
-
-
 
 module.exports = router;

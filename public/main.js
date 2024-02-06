@@ -9,7 +9,6 @@ form.addEventListener("input", (event) => {
 
     if(!isValid){
         const inputControl = event.target.parentElement;
-        console.log(inputControl);
         const error = inputControl.querySelector('.error');
         error.innerText = "Invalid Input"
 
@@ -73,7 +72,7 @@ function calculateArbitrageOdds(roundedArbitrageOdds1, roundedArbitrageOdds2){
 
 function displayArbitrageOddsResult(arbitrageOdds1, arbitrageOdds2, oddsResult) {
     const result = document.getElementById("odd-result");
-    result.innerHTML = `${arbitrageOdds1}% + ${arbitrageOdds2}% = ${oddsResult}%`;
+    result.innerHTML = `${arbitrageOdds1}% + ${arbitrageOdds2}% = ${oddsResult.toFixed(3)}%`;
 }
 
 function calculateProfit(stake, oddsResultPercentage){
@@ -132,8 +131,3 @@ function displayStake(bet){
 }
 
 
-//odds1 
-//(currentbet x odds1) - (currentbet + oppositbet); 
-
-//odds2
-//(oppositbet x odds2) - (oppositbet + currentbet);
