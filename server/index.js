@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 const corsOptions = {
-    origin : 'http://127.0.0.1:5500',
+    origin : 'https://savemeaspark20.github.io/arbitrage_calculator/',
     credentials : true,
     optionSuccessStatus : 200
 }
