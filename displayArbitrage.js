@@ -12,7 +12,7 @@ const scrapingSection = document.querySelector('.scraping');
 //     })
 //     .catch(error => console.error('Error fetching data:', error));
 
-const eventSourceSportplus = new EventSource('https://arbscalculator.onrender.com/sportplus/', 
+const eventSourceSportplus = new EventSource('http://localhost:4001/sportplus/', 
     { withCredentials: true }
 );
 
@@ -27,7 +27,7 @@ eventSourceSportplus.onmessage = (event) => {
     arbitrageOpportunity(table, data.teamData, data.result)
 }
 
-const eventSource1xBet = new EventSource('https://arbscalculator.onrender.com/', 
+const eventSource1xBet = new EventSource('http://localhost:4001/', 
     {withCredentials: true}
 );
 
