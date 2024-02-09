@@ -4,16 +4,16 @@ const sportPlus = async () => {
     const url = "https://www.sportsplus.ph/sbk/game/league/2/339";
     const browser = await puppeteer.launch({ 
         headless: "new", 
-        args : [
+        args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",
             "--single-process",
             "--no-zygote",
-        ],
-        executablePath:
+          ],
+          executablePath:
             process.env.NODE_ENV === "production"
-            ? process.env.PUPPETEER_EXECUTABLE_PATH
-            : puppeteer.executablePath(),
+              ? process.env.PUPPETEER_EXECUTABLE_PATH
+              : puppeteer.executablePath(),
         timeout: 60000,
     });
     
