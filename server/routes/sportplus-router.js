@@ -8,22 +8,21 @@ router.get('/sportplus', async (req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
 
-    const sseInterval2 = setInterval(async () => {
-        // console.log("pumasok sa sportplus");
+    const sendSSEData = async () => {
         try{
             const resultCalculation = await arbitrageCalculationSportplus();
-            console.log(resultCalculation);
+            
             res.write(`data: ${JSON.stringify(resultCalculation)}\n\n`);      
         }catch(error){
             console.error('Error in SSE stream:', error);
             res.write(`data: ${JSON.stringify({ error: 'Internal Server Error' })}\n\n`);
             res.end();
         }
-    }, 50000);
-
+    };
+    const sseInterval = setInterval(sendSSEData, 50000);
 
     req.on('close', ()=> {
-        clearInterval(sseInterval2);
+        clearInterval(sseInterval);
     })
 })
 

@@ -10,9 +10,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 const corsOptions = {
-    origin : 'https://savemeaspark20.github.io/',
+    origin : ['http://127.0.0.1:5500', 'https://savemeaspark20.github.io' ],
     credentials : true,
-    optionSuccessStatus : 200
+    optionsSuccessStatus: 200
 }
 
 app.use(cors(corsOptions))

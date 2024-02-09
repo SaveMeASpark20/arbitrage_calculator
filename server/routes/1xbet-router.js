@@ -8,19 +8,20 @@ router.get('/', async (req, res) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     
-    const sseInterval = setInterval(async () => {        
+    const sendSSEData = async () => {        
         try{
             const resultCalculation = await arbitrageCalculation();
-            // console.log(resultCalculation);
+            
             res.write(`data: ${JSON.stringify(resultCalculation)}\n\n`);
     
         }catch(error){
             console.log('Error in SSE stream: ', error);
             res.write(`data: ${JSON.stringify({error: 'Internal Server Error'})}\n\n`);
-            res.end();
+            res.status(500).end();
         }
-    },50000);
+    };
     
+    const sseInterval = setInterval(sendSSEData, 50000);
     
 
     req.on('close', () => {
