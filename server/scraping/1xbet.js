@@ -4,7 +4,6 @@ const oneXBet = async () => {
     const url = "https://1xbet.ph/en/live/basketball/2626462-nba-2k24-cyber-league";
     const browser = await puppeteer.launch({ 
         headless: "new", 
-        timeout: 60000,
         args : [
             "--disable-setuid-sandbox",
             "--no-sandbox",
@@ -14,7 +13,8 @@ const oneXBet = async () => {
         executablePath:
             process.env.NODE_ENV === "production"
             ? process.env.PUPPETEER_EXECUTABLE_PATH
-            : puppeteer.executablePath()
+            : puppeteer.executablePath(),
+        timeout: 60000,
     });
     const page = await browser.newPage();
 
