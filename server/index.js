@@ -19,7 +19,7 @@ app.use(cors(corsOptions))
 app.use('/', oneXBetRouter)
 app.use('/', sportPlusRouter)
 
-const port = 4001
+const port = process.env.PORT || 4001;
 
  app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
