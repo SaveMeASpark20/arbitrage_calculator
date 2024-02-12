@@ -25,14 +25,14 @@ const oneXBet = async () => {
         const captionLabelClassName = '.betting-main-dashboard .dashboard-game .caption__label';
 
         const getElementsInnerText = async (page, marketValueClassName, captionLabelClassName) => {
-            const marketValue = await page.waitForSelector(marketValueClassName, { timeout: 60000 })
+            const marketValue = await page.waitForSelector(marketValueClassName, { timeout: 600000 })
                 .then(() => page.$$eval(marketValueClassName, elements => elements.map(element => element.innerText)))
                 .catch(error => {
                     console.error(`Error 1xbet: ${error.message}`);
                     return null;
                 });
     
-            const captionLabel = await page.waitForSelector(captionLabelClassName)
+            const captionLabel = await page.waitForSelector(captionLabelClassName, { timeout: 600000 })
                 .then(() => page.$$eval(captionLabelClassName, elements => elements.map(element => element.innerText)))
                 .catch(error => {
                     console.error(`Error 1xbet: ${error.message}`);
