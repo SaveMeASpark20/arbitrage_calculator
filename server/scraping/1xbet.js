@@ -3,7 +3,7 @@ require("dotenv").config();
 const oneXBet = async () => {
     const url = "https://1xbet.ph/en/live/basketball/2626462-nba-2k24-cyber-league";
     const browser = await puppeteer.launch({ 
-        headless: "new", 
+        headless: true, 
         args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",
@@ -16,10 +16,11 @@ const oneXBet = async () => {
               : puppeteer.executablePath(),
         timeout: 60000,
     });
-    const page = await browser.newPage();
-
+    
     try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 }); // Set timeout to 60 seconds
+        const page = await browser.newPage();
+
+        await page.goto(url, { timeout: 90000 }); // Set timeout to 60 seconds
 
         const marketValueClassName = '.betting-main-dashboard .dashboard-game .ui-market__value';
         const captionLabelClassName = '.betting-main-dashboard .dashboard-game .caption__label';
@@ -46,7 +47,7 @@ const oneXBet = async () => {
     
     } catch (error) {
         console.error(`Error in oneXBet: ${error.message}`);
-        return { marketValue: null, captionLabel: null };
+        return { marketValue: [], captionLabel: [] };
     } finally {
         await browser.close();
     }

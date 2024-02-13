@@ -17,16 +17,15 @@ router.get('/', async (req, res) => {
         }catch(error){
             console.log('Error in SSE stream: ', error);
             res.write(`data: ${JSON.stringify({error: 'Internal Server Error'})}\n\n`);
-            res.status(500).end();
+            res.end();
         }
     };
     
-    const sseInterval = setInterval(sendSSEData, 50000);
+    setInterval(sendSSEData, 50000);
     
-
-    req.on('close', () => {
-        clearInterval(sseInterval);
-    })
+    // req.on('close', () => {
+    //     clearInterval(sseInterval);
+    // })
 })
 
 module.exports = router;

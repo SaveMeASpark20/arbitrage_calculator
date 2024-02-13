@@ -8,7 +8,7 @@ const arbitrageCalculationSportplus = async() => {
 
         const scrapeData = await sportPlus();
     
-        if(!scrapeData && !scrapeData.captionLabel && !scrapeData.captionLabel){
+        if(!scrapeData || !scrapeData.captionLabel || !scrapeData.captionLabel){
             throw new Error('There is something wrong in scrape data');    
         }
 

@@ -7,12 +7,14 @@ const arbitrageCalculation = async() => {
         let teamData = {};
         const scrapeData = await oneXBet();
         
-        if(!scrapeData && !scrapeData.captionLabel && !scrapeData.captionLabel){
+        if(!scrapeData || !scrapeData.captionLabel || !scrapeData.captionLabel){
             throw new Error('There is something wrong in scrape data');
         }
 
-        const captionLabelFiltered = scrapeData.captionLabel;
-        const marketValueFiltered = filterArbitrage(scrapeData.marketValue);
+        const captionLabelFiltered = await scrapeData.captionLabel;
+        const marketValue = await scrapeData.marketValue;
+        
+        const marketValueFiltered = filterArbitrage(marketValue);
         for(let i = 0; i < captionLabelFiltered.length; i+=2){
             const {odds1, odds2} = odds(marketValueFiltered, i);
             const arbitrageCalculation = calculateArbitrageOdds(odds1, odds2);
@@ -26,7 +28,7 @@ const arbitrageCalculation = async() => {
         return { teamData, result, localeDateTime };
         
     } catch (error) {
-        throw new Error("arbitrage calculation 1xbet", error);
+        throw new Error("arbitrage calculation 1xbet" + error);
     }
 }
 

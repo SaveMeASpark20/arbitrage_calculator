@@ -3,7 +3,7 @@ require("dotenv").config();
 const sportPlus = async () => {
     const url = "https://www.sportsplus.ph/sbk/game/league/2/339";
     const browser = await puppeteer.launch({ 
-        headless: "new", 
+        headless: true, 
         args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",
@@ -21,7 +21,7 @@ const sportPlus = async () => {
         const page = await browser.newPage();
         await page.goto(url, { timeout: 90000 });
 
-         const betCategory = ".s7k-bettype-filter .s7k-mr-2";
+        const betCategory = ".s7k-bettype-filter .s7k-mr-2";
         const optionWinner = ".s7k-nav-wrapper .s7k-nav-wrapper-content li:nth-child(3)";
 
 

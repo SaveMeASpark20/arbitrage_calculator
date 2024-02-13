@@ -1,13 +1,12 @@
 const express = require('express')
 const cors = require('cors')
-const bodyParser = require('body-parser')
+const homeRouter = require('./routes/home-router.js')
 const oneXBetRouter = require('./routes/1xbet-router')
 const sportPlusRouter = require('./routes/sportplus-router')
 
 const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.json());
 
 const corsOptions = {
     origin : ['http://127.0.0.1:5500', 'https://savemeaspark20.github.io' ],
@@ -16,8 +15,9 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use('/', oneXBetRouter)
-app.use('/', sportPlusRouter)
+app.use('/', homeRouter )
+app.use('/oneXBet', oneXBetRouter)
+app.use('/sportplus', sportPlusRouter)  
 
 const port = process.env.PORT || 4001;
 
