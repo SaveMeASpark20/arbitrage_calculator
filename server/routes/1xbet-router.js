@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
         }
     };
     
-    const sseInterval = setInterval(sendSSEData, 50000);
+    const sseInterval = setInterval(sendSSEData, 500000);
     
     req.on('close', () => {
         clearInterval(sseInterval);
