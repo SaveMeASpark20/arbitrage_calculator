@@ -27,21 +27,21 @@ eventSourceSportplus.onmessage = (event) => {
     arbitrageOpportunity(table, data.teamData, data.result)
 }
 
-// const eventSource1xBet = new EventSource('https://arbitrage-scraper-bo77.onrender.com', 
-//     {withCredentials: true}
-// );
+const eventSource1xBet = new EventSource('https://arbitrage-scraper-bo77.onrender.com/oneXBet', 
+    {withCredentials: true}
+);
 
-// eventSource1xBet.onmessage = (event) => {
-//     const data = JSON.parse(event.data);
+eventSource1xBet.onmessage = (event) => {
+    const data = JSON.parse(event.data);
 
-//     if(!data.teamData || !data.result || !data.localeDateTime){
-//         throw new Error("There's a missing data");
-//     }
-//     displayDateTimeAndWebName(data.localeDateTime, '1xBet');
-//     const table = tableTemplate();
-//     arbitrageOpportunity(table, data.teamData, data.result)
-//     // console.log('data', event.data);
-// }
+    if(!data.teamData || !data.result || !data.localeDateTime){
+        throw new Error("There's a missing data");
+    }
+    displayDateTimeAndWebName(data.localeDateTime, '1xBet');
+    const table = tableTemplate();
+    arbitrageOpportunity(table, data.teamData, data.result)
+    // console.log('data', event.data);
+}
 
 
 
