@@ -3,7 +3,7 @@ require("dotenv").config();
 const sportPlus = async () => {
     const url = "https://www.sportsplus.ph/sbk/game/league/2/339";
     const browser = await puppeteer.launch({ 
-        headless: true, 
+        headless: "new", 
         args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",

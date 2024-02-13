@@ -3,7 +3,7 @@ require("dotenv").config();
 const oneXBet = async () => {
     const url = "https://1xbet.ph/en/live/basketball/2626462-nba-2k24-cyber-league";
     const browser = await puppeteer.launch({ 
-        headless: true, 
+        headless: "new", 
         args: [
             "--disable-setuid-sandbox",
             "--no-sandbox",

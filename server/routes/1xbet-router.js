@@ -21,11 +21,11 @@ router.get('/', async (req, res) => {
         }
     };
     
-    setInterval(sendSSEData, 50000);
+    const sseInterval = setInterval(sendSSEData, 50000);
     
-    // req.on('close', () => {
-    //     clearInterval(sseInterval);
-    // })
+    req.on('close', () => {
+        clearInterval(sseInterval);
+    })
 })
 
 module.exports = router;
